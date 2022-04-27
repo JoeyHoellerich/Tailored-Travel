@@ -1,5 +1,5 @@
 // Obtain user location
-// use leaflet's get coordinate built in function
+// use leaflet's get coordinate built in function - async
 // return user's latitude and longitude
 
 // Center Map based on user's latitude and longitude
