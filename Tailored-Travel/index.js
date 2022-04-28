@@ -30,6 +30,7 @@ async function getCoords(){
 // create Map
 async function makeMap(){
 
+    // grab the div that the map will be placed in
     let mapObj = document.getElementById("map");
 
     // get user's coords and set them to user.latitude and user.longitude
