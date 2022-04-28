@@ -107,19 +107,22 @@ function markerMaker(){
     let markerArray = [];
     // for each business
     shopArray.forEach((item) => {
-        // create a new marker 
+        // create a new marker based on business lat and long
         let marker = L.marker([item.latitude, item.longitude]);
+        // bind a popup to the new marker - business name
         marker.bindPopup(`<b>${item.businessName}</b>`);
+        // add marker to the map
         marker.addTo(map)
+        // add marker to array (if you come back, make layers and remove previous layer when user selects the submit button again)
         markerArray.push(marker);
     })
 }
 
+// function that is run when user hits submit
 async function businessLocator(){
+    // get list of businesses from foursquare
     await generateBusinessArray()
+    // place markers
     markerMaker()
 }
-// get value from dropdown menu (resturant, business, coffee, etc)
-// use value to identify 5 closest places based on user Lat/Long - Foursquare API
-// create obejct for each location with location name, and Lat/Long Values
-// place locations on map using markers (add location names to markers) - Leaflet API
+
