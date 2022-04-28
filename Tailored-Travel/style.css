@@ -1,0 +1,28 @@
+#map {
+    height: 500px;
+}
+
+#dropdown {
+    text-align: center;
+    margin: 10px;
+}
+
+#dropdown label{
+    font-size: large;
+    font-weight: bold;
+}
+
+#dropdown select{
+    width: 200px;
+    height: 25px;
+    margin: 0 20px;
+}
+
+#dropdown button{
+    width: 100px;
+    height: 50px
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+    text-align: center;
+}

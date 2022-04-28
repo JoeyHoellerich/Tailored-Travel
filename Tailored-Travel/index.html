@@ -13,20 +13,23 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
     <!-- Foursquare API (JS?) -->
+    <link rel="stylesheet" href="./style.css">
     <title>Tailored Travel</title>
 </head>
 <body>
-    <!-- Add dropdown menu for selecting business types -->
-    <label for="business">Choose a Business Type</label>
-    <select name = "business" id = "businessDrop"> 
-        <option value="coffee">Coffee</option>
-        <option value="resturant">Resturant</option>
-        <option value="hotel">Hotel</option>
-        <option value="market">Market</option>
-    </select>
+    <div id="dropdown">
+        <!-- Add dropdown menu for selecting business types -->
+        <label for="business">Choose a Business Type</label>
+        <select name = "business" id = "businessDrop"> 
+            <option value="coffee">Coffee</option>
+            <option value="resturant">Resturant</option>
+            <option value="hotel">Hotel</option>
+            <option value="market">Market</option>
+        </select>
 
     <!-- Add Submit Button for Dropdown menu -->
     <button type="submit" id="businessSub">Submit</button>
+    </div>
 
     <!-- Add map -->
     <div id="map"></div>
