@@ -3,6 +3,8 @@ const user ={
     longitude: null
 }
 
+let shopArray = [];
+let map;
 // Obtain user location
 async function getCoords(){
     // check and see if the user has geolocation
@@ -38,7 +40,7 @@ async function makeMap(){
     }
 
     // create new map object on the div with the map id
-    let map = L.map("map", {
+    map = L.map("map", {
         // center map on the user's latitude and longitude
         center: [user.latitude, user.longitude],
         zoom: 15
@@ -60,22 +62,58 @@ async function makeMap(){
 
 makeMap()
 
-// Center Map based on user's latitude and longitude
-// zoom in on map (set minzoom value)
-// add marker on user's position
-
-
 // grab submit button from DOM
 const businessSubmit = document.getElementById("businessSub");
 // grab dropdown from DOM
 const businessDrop = document.getElementById("businessDrop")
 businessSubmit.addEventListener("click", businessLocator)
 
+// create function that create an array of 5 businesses for a specified category
+// [{latitude, longitude, name}, {...}]
+async function generateBusinessArray(){
+        // get value from dropdown menu
+        let businessSelect = businessDrop.value;
+        // use value to create array of 5 closest businesses
+        let businessList = await getBusinessesList(user.latitude, user.longitude, businessSelect);
+    
+        // create array to contain objects of each business
+        let businessArray = [];
+        // for each business in our list
+        businessList.forEach((item) => {
+            // create a new object
+            let object = {
+                // add business latitude
+                latitude: item.geocodes.main.latitude,
+                // add business longitude
+                longitude: item.geocodes.main.longitude,
+                // add business name
+                businessName: item.name
+            }
+            // add new object to our array
+            businessArray.push(object);
+        })
+    
+        // return our business array
+        shopArray = businessArray;
+}
+
 // create function for submit button
+function markerMaker(){
+    // create Marker array 
+    let markerArray = [];
+    // for each business
+    shopArray.forEach((item) => {
+        // create a new marker 
+        let marker = L.marker([item.latitude, item.longitude]);
+        marker.bindPopup(`<b>${item.businessName}</b>`);
+        marker.addTo(map)
+        markerArray.push(marker);
+    })
+}
+
 async function businessLocator(){
-    // get value from dropdown menu
-    let businessSelect = businessDrop.value;
-    console.log(businessSelect);
+    await generateBusinessArray()
+    markerMaker()
 }
 // get value from dropdown menu (resturant, business, coffee, etc)
 // use value to identify 5 closest places based on user Lat/Long - Foursquare API
