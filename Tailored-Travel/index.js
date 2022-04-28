@@ -1,9 +1,12 @@
+// create object for user that will hold latitude and longitude data
 const user ={
     latitude: null,
     longitude: null
 }
 
+// holds list of current business selected by user (coffe, hotels, etc)
 let shopArray = [];
+// make map a global variable for use throughout functions
 let map;
 // Obtain user location
 async function getCoords(){

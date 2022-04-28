@@ -26,7 +26,7 @@ async function getBusinessesList(lat, long, businessCode){
       };
 
     // create search query based on data from user  
-    let searchQuery = `https://api.foursquare.com/v3/places/search?ll=${lat}%2C${long}&categories=${businessCode}&limit=5`
+    let searchQuery = `https://api.foursquare.com/v3/places/search?ll=${lat}%2C${long}&categories=${businessCode}&sort=DISTANCE&limit=5`
       
     // fetch information from foursquare places, store in array called businessList   
     let businessList = await fetch(searchQuery, options)
