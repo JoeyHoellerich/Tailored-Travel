@@ -36,5 +36,6 @@ async function getBusinessesList(lat, long, businessCode){
         .then(response => response.results)
         .catch(err => console.error(err));
 
+    // returns array of businesses (still needs to be modified)
     return businessList
 }
